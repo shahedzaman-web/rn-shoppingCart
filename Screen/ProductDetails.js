@@ -165,8 +165,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#F5FAFF",
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
     marginRight: 10
   },
   relatedItemImg: {
