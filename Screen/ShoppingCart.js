@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
-import { Entypo, AntDesign, FontAwesome } from "@expo/vector-icons";
-import CheckBox from 'react-native-check-box'
+import { Entypo, FontAwesome } from "@expo/vector-icons";
+import { RadioButton } from 'react-native-paper';
 import ProductCart from "../components/ProductCart";
 
 export default function ShoppingCart() {
-  const [pickup, setPickup] = useState(false);
-  const [delivery, setDelivery] = useState(false);
+  const [checked, setChecked] = useState('delivery');
   return (
     <View style={styles.container}>
       <View style={[styles.row, styles.spaceBetween]}>
@@ -49,24 +48,26 @@ export default function ShoppingCart() {
       </View>
       <View>
         <View style={styles.row}>
-        <CheckBox
-    style={styles.checkbox}
-    onClick={()=>{
-      setPickup(true)
-      setDelivery(false)
-    }}
-    isChecked={pickup}
-    leftText={"Pickup"}
-/>
-<CheckBox
-    style={styles.checkbox}
-    onClick={()=>{
-      setDelivery(true)
-      setPickup(false)
-    }}
-    isChecked={delivery}
-    leftText={"Delivery"}
-/>
+          <View style={[styles.checkbox,styles.row]}>
+          <RadioButton
+          color= "#8757f7"
+        value="pickup"
+        status={ checked === 'pickup' ? 'checked' : 'unchecked' }
+        onPress={() => setChecked('pickup')}
+      />
+            <Text>Pickup</Text>
+          </View>
+  
+          <View style={[styles.checkbox,styles.row]}>
+          <RadioButton
+            color= "#8757f7"
+        value="delivery"
+        status={ checked === 'delivery' ? 'checked' : 'unchecked' }
+        onPress={() => setChecked('delivery')}
+      />
+       
+            <Text>Delivery</Text>
+          </View>
           
         </View>
       </View>
@@ -136,8 +137,8 @@ const styles = StyleSheet.create({
     marginTop: 20,
     paddingHorizontal: 6,
     marginVertical: 6,
-    shadowOpacity: 0.4,
-    shadowRadius: 15,
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
   },
   checkoutContainer: {
     width: "100%",
